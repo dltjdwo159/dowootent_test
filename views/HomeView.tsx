@@ -10,7 +10,7 @@ interface HomeViewProps {
 
 const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
   return (
-    <div className="opacity-100 transition-opacity duration-700">
+    <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center overflow-hidden bg-slate-900">
         <img 
@@ -21,7 +21,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/60 to-transparent"></div>
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="max-w-2xl text-left">
+          <div className="max-w-2xl text-left transition-all duration-1000 transform translate-y-0 opacity-100">
             <h1 className="text-white text-4xl md:text-7xl font-bold mb-8 leading-[1.2] break-keep">
               공간의 가치를 만드는<br/>
               <span className="text-blue-400">주식회사 도우텐트</span>
@@ -43,15 +43,15 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
           </div>
 
           {/* 히어로 섹션 하단 중앙 SCROLL DOWN 표시 */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 pointer-events-none">
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 pointer-events-none custom-bounce">
             <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center p-1 mb-2">
               <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-scroll-dot"></div>
             </div>
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase opacity-60">SCROLL DOWN</span>
           </div>
 
-          {/* 히어로 섹션 오른쪽 하단 플로팅 상담 카드 */}
-          <div className="hidden lg:block absolute bottom-0 right-0 p-4 transform translate-y-0 opacity-100 transition-all duration-1000">
+          {/* 히어로 섹션 오른쪽 하단 플로팅 상담 카드 (우측 끝 밀착) */}
+          <div className="hidden lg:block absolute bottom-0 right-0 p-4 z-20 transition-all duration-700 transform translate-x-0 opacity-100">
             <div className="bg-[#003399] text-white p-5 rounded-[1.25rem] shadow-2xl w-[260px] border border-blue-400/10 relative overflow-hidden">
               <div className="absolute -right-6 -top-6 w-16 h-16 bg-blue-500/20 rounded-full blur-2xl"></div>
               
@@ -152,12 +152,12 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
         .animate-scroll-dot {
           animation: scroll-dot 2s infinite ease-in-out;
         }
-        @keyframes bounce-custom {
-          0%, 100% { transform: translateX(-50%) translateY(0); }
-          50% { transform: translateX(-50%) translateY(-10px); }
+        @keyframes custom-bounce {
+          0%, 100% { transform: translate(-50%, 0); }
+          50% { transform: translate(-50%, -10px); }
         }
-        .animate-bounce {
-          animation: bounce-custom 2s infinite;
+        .custom-bounce {
+          animation: custom-bounce 2s infinite ease-in-out;
         }
       `}</style>
     </div>
