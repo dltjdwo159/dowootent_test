@@ -22,14 +22,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
   const logoUrl = "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210617_149%2F1623912999712z9TGi_PNG%2F31tV7Z5pzct3FXwaoy3hwJtp.png";
 
   return (
-    <nav className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed w-full bg-white/95 backdrop-blur-md z-[100] border-b border-slate-100 shadow-sm">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
-          <div className="flex-shrink-0 cursor-pointer flex items-center group" onClick={() => setView('HOME')}>
+          <div className="flex-shrink-0 cursor-pointer flex items-center" onClick={() => setView('HOME')}>
             <img 
               src={logoUrl} 
               alt="주식회사 도우텐트 로고" 
-              className="h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-14 md:h-16 w-auto object-contain transition-transform hover:scale-105"
             />
           </div>
           
@@ -39,8 +39,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
               <button
                 key={item.view}
                 onClick={() => setView(item.view)}
-                className={`text-sm font-semibold transition-colors ${
-                  currentView === item.view ? 'text-blue-700' : 'text-gray-600 hover:text-blue-600'
+                className={`text-sm font-bold transition-colors ${
+                  currentView === item.view ? 'text-blue-700' : 'text-slate-600 hover:text-blue-600'
                 }`}
               >
                 {item.label}
@@ -48,9 +48,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
             ))}
             <button
               onClick={() => setView('ADMIN')}
-              className="text-xs bg-gray-100 px-3 py-1.5 rounded-full text-gray-400 hover:bg-gray-200 hover:text-gray-600 transition-all ml-4"
+              className="text-[10px] bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all ml-4"
             >
-              관리자
+              ADMIN
             </button>
           </div>
 
@@ -58,9 +58,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 focus:outline-none p-2"
+              className="text-slate-600 focus:outline-none p-2"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -74,8 +74,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 animate-in slide-in-from-top duration-300">
-          <div className="px-4 pt-2 pb-6 space-y-1">
+        <div className="md:hidden bg-white border-t border-slate-100">
+          <div className="px-6 py-8 space-y-4">
             {menuItems.map((item) => (
               <button
                 key={item.view}
@@ -83,22 +83,22 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, setView, config }) => {
                   setView(item.view);
                   setIsOpen(false);
                 }}
-                className={`block w-full text-left px-3 py-3 text-base font-medium rounded-lg ${
-                  currentView === item.view ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
+                className={`block w-full text-left py-3 text-lg font-bold ${
+                  currentView === item.view ? 'text-blue-700' : 'text-slate-700'
                 }`}
               >
                 {item.label}
               </button>
             ))}
-            <div className="pt-4 mt-2 border-t border-gray-100">
+            <div className="pt-6 border-t border-slate-100">
               <button
                 onClick={() => {
                   setView('ADMIN');
                   setIsOpen(false);
                 }}
-                className="block w-full text-left px-3 py-2 text-sm font-medium text-gray-400 hover:text-gray-600"
+                className="text-slate-400 font-medium"
               >
-                관리자 로그인
+                관리자 모드
               </button>
             </div>
           </div>

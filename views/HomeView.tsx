@@ -12,89 +12,75 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center overflow-hidden bg-slate-900">
-        <img 
-          src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210617_271%2F1623915622659W53Hs_JPEG%2FDvcve-BzrRyw-CUlXPA5k4CB.jpg" 
-          alt="Main Banner" 
-          className="absolute inset-0 w-full h-full object-cover opacity-50 scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/60 to-transparent"></div>
+      <section className="relative h-[80vh] md:h-[90vh] flex items-center overflow-hidden bg-slate-900">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210617_271%2F1623915622659W53Hs_JPEG%2FDvcve-BzrRyw-CUlXPA5k4CB.jpg" 
+            alt="Main Banner" 
+            className="w-full h-full object-cover opacity-50"
+            style={{ animation: 'heroZoom 20s infinite alternate' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+        </div>
         
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <div className="max-w-2xl text-left transition-all duration-1000 transform translate-y-0 opacity-100">
-            <h1 className="text-white text-4xl md:text-7xl font-bold mb-8 leading-[1.2] break-keep">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl animate-fade-up">
+            <h1 className="text-white text-4xl md:text-7xl font-black mb-8 leading-[1.15] break-keep">
               공간의 가치를 만드는<br/>
               <span className="text-blue-400">주식회사 도우텐트</span>
             </h1>
-            <div className="flex flex-col sm:flex-row justify-start gap-4">
+            <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-xl break-keep font-light">
+              25년 기술력으로 설계부터 시공까지, 대형 산업용 천막 및 철구조물 최고의 파트너가 되어드립니다.
+            </p>
+            <div className="flex flex-wrap gap-4">
               <button 
                 onClick={() => setView('CONTACT')}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-md font-bold text-lg transition-all shadow-lg hover:-translate-y-1"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-xl hover:-translate-y-1 active:scale-95"
               >
-                무료 견적 상담받기
+                무료 견적 상담
               </button>
               <button 
                 onClick={() => setView('PORTFOLIO')}
-                className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-md font-bold text-lg transition-all"
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-lg font-bold text-lg transition-all"
               >
                 시공사례 보기
               </button>
             </div>
           </div>
+        </div>
 
-          {/* 히어로 섹션 하단 중앙 SCROLL DOWN 표시 */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 pointer-events-none custom-bounce">
-            <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center p-1 mb-2">
-              <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-scroll-dot"></div>
-            </div>
-            <span className="text-[10px] font-bold tracking-[0.2em] uppercase opacity-60">SCROLL DOWN</span>
-          </div>
-
-          {/* 히어로 섹션 오른쪽 하단 플로팅 상담 카드 (우측 끝 밀착) */}
-          <div className="hidden lg:block absolute bottom-0 right-0 p-4 z-20 transition-all duration-700 transform translate-x-0 opacity-100">
-            <div className="bg-[#003399] text-white p-5 rounded-[1.25rem] shadow-2xl w-[260px] border border-blue-400/10 relative overflow-hidden">
-              <div className="absolute -right-6 -top-6 w-16 h-16 bg-blue-500/20 rounded-full blur-2xl"></div>
-              
-              <div className="relative z-10">
-                <span className="inline-block bg-blue-500/30 text-blue-100 px-2 py-0.5 rounded-full text-[8px] font-bold mb-3 tracking-[0.1em] uppercase">
-                  CONSULTATION
-                </span>
-                
-                <h3 className="text-lg font-bold mb-5 leading-[1.3] break-keep">
-                  빠르고 친절하게<br/>상담해 드립니다
-                </h3>
-                
-                <div className="space-y-1.5">
-                  <p className="text-blue-300 font-bold text-[8px] tracking-wider text-center">지금 바로 전화 상담하기</p>
-                  <div className="bg-white rounded-lg py-2.5 px-3 shadow-lg transform transition-transform hover:scale-[1.02]">
-                    <a 
-                      href="tel:01098396979" 
-                      className="text-[#003399] text-xl font-black tracking-tighter flex items-center justify-center"
-                    >
-                      010-9839-6979
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Floating Contact (Desktop) */}
+        <div className="hidden lg:block absolute bottom-12 right-12 z-20 animate-fade-in" style={{ animationDelay: '0.5s', opacity: 0, animationFillMode: 'forwards' }}>
+          <div className="bg-[#003399] text-white p-6 rounded-3xl shadow-2xl w-[280px] border border-blue-400/20">
+            <p className="text-blue-300 text-[10px] font-bold tracking-widest uppercase mb-2">Fast Consultation</p>
+            <h3 className="text-xl font-bold mb-6">지금 바로 전화 상담</h3>
+            <a 
+              href="tel:01098396979" 
+              className="bg-white text-[#003399] text-2xl font-black py-3 rounded-xl flex items-center justify-center hover:bg-blue-50 transition-colors shadow-lg"
+            >
+              010-9839-6979
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Featured Services */}
+      {/* Services Grid */}
       <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">핵심 설루션</h2>
+            <div className="w-12 h-1 bg-blue-600 mx-auto rounded-full"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => (
               <div 
                 key={service.id} 
-                className="bg-white p-10 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col items-center text-center min-h-[280px] justify-center border border-gray-100"
+                className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group"
               >
-                <h3 className="text-xl font-extrabold mb-5 text-gray-900 tracking-tight">
+                <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors">
                   {service.title}
                 </h3>
-                <div className="h-[2px] w-8 bg-blue-600 mb-5 rounded-full"></div>
-                <p className="text-gray-500 text-[15px] leading-[1.6] break-keep font-medium">
+                <p className="text-gray-500 text-sm leading-relaxed break-keep">
                   {service.description}
                 </p>
               </div>
@@ -103,63 +89,40 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
         </div>
       </section>
 
-      {/* Recent Projects Preview */}
+      {/* Featured Projects */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-2">최근 시공 사례</h2>
-              <p className="text-gray-500 font-medium">도우텐트의 완벽한 시공 능력을 확인하세요.</p>
+              <p className="text-gray-500">도우텐트가 완료한 검증된 프로젝트입니다.</p>
             </div>
             <button 
               onClick={() => setView('PORTFOLIO')}
-              className="text-blue-600 font-bold hover:text-blue-800 transition-colors flex items-center"
+              className="text-blue-600 font-bold hover:underline"
             >
-              전체보기 <span className="ml-1 text-lg">→</span>
+              전체보기 →
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {projects.slice(0, 3).map((project) => (
-              <div key={project.id} className="group cursor-pointer overflow-hidden rounded-2xl shadow-sm border border-gray-100">
-                <div className="relative aspect-[4/3] overflow-hidden">
+              <div key={project.id} className="group cursor-pointer">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl mb-4 bg-gray-100 shadow-inner">
                   <img 
                     src={project.imageUrl} 
                     alt={project.title} 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
-                    <span className="text-white border-2 border-white px-5 py-2 rounded-full font-bold text-sm tracking-widest">VIEW CASE</span>
-                  </div>
                 </div>
-                <div className="p-6 bg-white">
-                  <span className="text-[11px] bg-blue-50 text-blue-700 px-2 py-1 rounded font-bold uppercase tracking-tighter mb-2 inline-block">
-                    {project.category}
-                  </span>
-                  <h3 className="text-lg font-bold text-gray-900 line-clamp-1">{project.title}</h3>
-                </div>
+                <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1 block">
+                  {project.category}
+                </span>
+                <h3 className="text-lg font-bold text-gray-900">{project.title}</h3>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      <style>{`
-        @keyframes scroll-dot {
-          0% { transform: translateY(0); opacity: 0; }
-          50% { opacity: 1; }
-          100% { transform: translateY(12px); opacity: 0; }
-        }
-        .animate-scroll-dot {
-          animation: scroll-dot 2s infinite ease-in-out;
-        }
-        @keyframes custom-bounce {
-          0%, 100% { transform: translate(-50%, 0); }
-          50% { transform: translate(-50%, -10px); }
-        }
-        .custom-bounce {
-          animation: custom-bounce 2s infinite ease-in-out;
-        }
-      `}</style>
     </div>
   );
 };
