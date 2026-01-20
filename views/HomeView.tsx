@@ -10,7 +10,7 @@ interface HomeViewProps {
 
 const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
   return (
-    <div className="animate-in fade-in duration-700">
+    <div className="opacity-100 transition-opacity duration-700">
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center overflow-hidden bg-slate-900">
         <img 
@@ -43,7 +43,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
           </div>
 
           {/* 히어로 섹션 하단 중앙 SCROLL DOWN 표시 */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-white/70">
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 pointer-events-none">
             <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center p-1 mb-2">
               <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-scroll-dot"></div>
             </div>
@@ -51,7 +51,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
           </div>
 
           {/* 히어로 섹션 오른쪽 하단 플로팅 상담 카드 */}
-          <div className="hidden lg:block absolute bottom-0 right-0 p-4 animate-in slide-in-from-right-2 duration-1000 delay-300">
+          <div className="hidden lg:block absolute bottom-0 right-0 p-4 transform translate-y-0 opacity-100 transition-all duration-1000">
             <div className="bg-[#003399] text-white p-5 rounded-[1.25rem] shadow-2xl w-[260px] border border-blue-400/10 relative overflow-hidden">
               <div className="absolute -right-6 -top-6 w-16 h-16 bg-blue-500/20 rounded-full blur-2xl"></div>
               
@@ -142,6 +142,7 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
           </div>
         </div>
       </section>
+
       <style>{`
         @keyframes scroll-dot {
           0% { transform: translateY(0); opacity: 0; }
@@ -150,6 +151,13 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
         }
         .animate-scroll-dot {
           animation: scroll-dot 2s infinite ease-in-out;
+        }
+        @keyframes bounce-custom {
+          0%, 100% { transform: translateX(-50%) translateY(0); }
+          50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        .animate-bounce {
+          animation: bounce-custom 2s infinite;
         }
       `}</style>
     </div>
