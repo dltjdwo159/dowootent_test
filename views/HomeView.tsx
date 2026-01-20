@@ -26,10 +26,6 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
               공간의 가치를 만드는<br/>
               <span className="text-blue-400">주식회사 도우텐트</span>
             </h1>
-            <p className="text-gray-300 text-lg md:text-xl mb-10 font-medium leading-relaxed break-keep max-w-lg">
-              25년 경력의 노하우로 대형천막 및 철구조물 시공의<br/> 
-              완벽한 설루션을 제공합니다.
-            </p>
             <div className="flex flex-col sm:flex-row justify-start gap-4">
               <button 
                 onClick={() => setView('CONTACT')}
@@ -46,23 +42,39 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
             </div>
           </div>
 
+          {/* 히어로 섹션 하단 중앙 SCROLL DOWN 표시 */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-white/70">
+            <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center p-1 mb-2">
+              <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-scroll-dot"></div>
+            </div>
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase opacity-60">SCROLL DOWN</span>
+          </div>
+
           {/* 히어로 섹션 오른쪽 하단 플로팅 상담 카드 */}
-          <div className="hidden lg:block absolute bottom-12 right-8 animate-in slide-in-from-bottom-10 duration-1000 delay-300">
-            <div className="bg-[#003399] text-white p-8 rounded-[2rem] shadow-2xl w-80 border border-blue-400/20 backdrop-blur-sm">
-              <span className="inline-block bg-blue-500/40 text-blue-100 px-3 py-1 rounded-full text-[10px] font-bold mb-4 tracking-widest uppercase">Consultation</span>
-              <h3 className="text-xl font-bold mb-3 leading-tight">빠르고 친절하게<br/>상담해 드립니다</h3>
-              <p className="text-blue-100/80 text-sm leading-relaxed mb-6 font-light break-keep">
-                산업용 천막, 물류창고 시공 등<br/>
-                전문가가 직접 도움을 드립니다.
-              </p>
-              <div className="bg-white rounded-2xl py-3 px-4 shadow-inner text-center">
-                <p className="text-[#003399] text-xs font-bold mb-1">지금 바로 전화 상담하기</p>
-                <a 
-                  href="tel:01098396979" 
-                  className="text-[#003399] text-xl font-black tracking-tight hover:scale-105 transition-transform inline-block"
-                >
-                  010-9839-6979
-                </a>
+          <div className="hidden lg:block absolute bottom-0 right-0 p-4 animate-in slide-in-from-right-2 duration-1000 delay-300">
+            <div className="bg-[#003399] text-white p-5 rounded-[1.25rem] shadow-2xl w-[260px] border border-blue-400/10 relative overflow-hidden">
+              <div className="absolute -right-6 -top-6 w-16 h-16 bg-blue-500/20 rounded-full blur-2xl"></div>
+              
+              <div className="relative z-10">
+                <span className="inline-block bg-blue-500/30 text-blue-100 px-2 py-0.5 rounded-full text-[8px] font-bold mb-3 tracking-[0.1em] uppercase">
+                  CONSULTATION
+                </span>
+                
+                <h3 className="text-lg font-bold mb-5 leading-[1.3] break-keep">
+                  빠르고 친절하게<br/>상담해 드립니다
+                </h3>
+                
+                <div className="space-y-1.5">
+                  <p className="text-blue-300 font-bold text-[8px] tracking-wider text-center">지금 바로 전화 상담하기</p>
+                  <div className="bg-white rounded-lg py-2.5 px-3 shadow-lg transform transition-transform hover:scale-[1.02]">
+                    <a 
+                      href="tel:01098396979" 
+                      className="text-[#003399] text-xl font-black tracking-tighter flex items-center justify-center"
+                    >
+                      010-9839-6979
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -130,6 +142,16 @@ const HomeView: React.FC<HomeViewProps> = ({ setView, projects, services }) => {
           </div>
         </div>
       </section>
+      <style>{`
+        @keyframes scroll-dot {
+          0% { transform: translateY(0); opacity: 0; }
+          50% { opacity: 1; }
+          100% { transform: translateY(12px); opacity: 0; }
+        }
+        .animate-scroll-dot {
+          animation: scroll-dot 2s infinite ease-in-out;
+        }
+      `}</style>
     </div>
   );
 };
